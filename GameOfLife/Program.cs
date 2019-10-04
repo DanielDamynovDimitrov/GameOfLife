@@ -1,5 +1,4 @@
 ﻿using GameOfLife.Extensions;
-using GameOfLife.Models;
 
 namespace GameOfLife
 {
@@ -7,11 +6,11 @@ namespace GameOfLife
     {
         static void Main(string[] args)
         {
-            new Board(width: 5, height: 5).GenerateDeadRows()
-                                          .SetLiveCell(1, 2)
-                                          .SetLiveCell(2, 2)
-                                          .SetLiveCell(3, 2)
-                                          .Simulate();
+            BoardBuilder.GetBoard(5, 5)
+                        .SetDieCell(1, 2)
+                        .SetDieCell(2, 2)
+                        .SetDieCell(3, 2)
+                        .Simulate();
         }
     }
 }

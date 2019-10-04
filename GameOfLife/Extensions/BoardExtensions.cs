@@ -9,13 +9,13 @@ namespace GameOfLife.Extensions
     public static class BoardExtensions
     {
         /// <summary>
-        /// Seting live cell from the board
+        /// Seting die cell from the board
         /// </summary>
         /// <param name="board"></param>
         /// <param name="rowIndex">Row where cell is positioned</param>
         /// <param name="columnIndex">Cell position in the row</param>
         /// <returns></returns>
-        public static Board SetLiveCell(this Board board, int rowIndex, int columnIndex)
+        public static Board SetDieCell(this Board board, int rowIndex, int columnIndex)
         {
             if (rowIndex < 0 ||
                 rowIndex >= board.Rows.Count ||
@@ -24,16 +24,16 @@ namespace GameOfLife.Extensions
                 throw new ArgumentException($"Cell with row index# {rowIndex} and column index# {columnIndex} is not existing. ");
 
             var cell = board[rowIndex, columnIndex];
-            cell.Value = CellConstants.LIVE_CELL;
+            cell.Value = CellConstants.DEAD_CELL;
             return board;
         }
 
         /// <summary>
-        /// Generating board with dead rows
+        /// Generating board with live rows
         /// </summary>
         /// <param name="board"></param>
         /// <returns></returns>
-        public static Board GenerateDeadRows(this Board board)
+        public static Board GenerateLiveCells(this Board board)
         {
             if (board.Width <= 0 || board.Height <= 0)
                 throw new ArgumentException("Width and height parameters are not correct! ");
@@ -43,7 +43,7 @@ namespace GameOfLife.Extensions
                 var newRow = new Row();
                 for (int columnIndex = 0; columnIndex < board.Width; columnIndex++)
                 {
-                    newRow.Cells.Add(new Cell(CellConstants.DEAD_CELL, rowIndex, columnIndex));
+                    newRow.Cells.Add(new Cell(CellConstants.LIVE_CELL, rowIndex, columnIndex));
                 }
 
                 board.Rows.Add(newRow);
