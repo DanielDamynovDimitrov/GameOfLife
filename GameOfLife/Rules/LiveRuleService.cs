@@ -32,7 +32,6 @@ namespace GameOfLife.Rules
 
         public bool ApplyRules(Board board, Cell cell)
         {
-            var initialState = cell.Value;
             var neightbours = cell.GetNeighbours(board)
                                   .ToList();
 
@@ -41,7 +40,7 @@ namespace GameOfLife.Rules
                 rule.Apply(cell, neightbours);
             }
 
-            return initialState != cell.Value;
+            return cell.Value != cell.NewValue;
         }
     }
 }

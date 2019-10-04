@@ -41,13 +41,13 @@ namespace GameOfLife.Extensions
         /// Killing cell
         /// </summary>
         /// <param name="cell"></param>
-        public static void Kill(this Cell cell) => cell.Value = CellConstants.DEAD_CELL;
+        public static void Kill(this Cell cell) => cell.NewValue = CellConstants.DEAD_CELL;
 
         /// <summary>
         /// Do cell being live
         /// </summary>
         /// <param name="cell"></param>
-        public static void DoLive(this Cell cell) => cell.Value = CellConstants.LIVE_CELL;
+        public static void DoLive(this Cell cell) => cell.NewValue = CellConstants.LIVE_CELL;
 
         /// <summary>
         /// Check if cell is not null
@@ -55,5 +55,11 @@ namespace GameOfLife.Extensions
         /// <param name="cell"></param>
         /// <returns></returns>
         public static bool IsValid(this Cell cell) => cell != null;
+
+        /// <summary>
+        /// Refresh state of the cell
+        /// </summary>
+        /// <param name="cell"></param>
+        public static void RefreshState(this Cell cell) => cell.Value = cell.NewValue;
     }
 }

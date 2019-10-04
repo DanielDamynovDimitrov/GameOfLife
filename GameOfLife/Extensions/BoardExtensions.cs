@@ -85,7 +85,24 @@ namespace GameOfLife.Extensions
                     }
                 }
 
+                board.RefreshState();
                 board.Print();
+            }
+        }
+
+
+        /// <summary>
+        /// Refresh state on a whole board
+        /// </summary>
+        /// <param name="board"></param>
+        public static void RefreshState(this Board board)
+        {
+            foreach (var row in board.Rows)
+            {
+                foreach (var cell in row.Cells)
+                {
+                    cell.RefreshState();
+                }
             }
         }
 

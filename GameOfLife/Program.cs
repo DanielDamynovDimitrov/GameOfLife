@@ -7,11 +7,10 @@ namespace GameOfLife
     {
         static void Main(string[] args)
         {
-            new Board(width: 4, height: 4).GenerateDeadRows()
-                                          .SetLiveCell(0, 1)
-                                          .SetLiveCell(1, 0)
-                                          .SetLiveCell(1, 1)
+            new Board(width: 5, height: 5).GenerateDeadRows()
                                           .SetLiveCell(1, 2)
+                                          .SetLiveCell(2, 2)
+                                          .SetLiveCell(3, 2)
                                           .Simulate();
         }
     }
