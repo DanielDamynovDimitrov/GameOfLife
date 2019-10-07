@@ -25,6 +25,7 @@ namespace GameOfLife.Extensions
 
             var cell = board[rowIndex, columnIndex];
             cell.Value = CellConstants.DEAD_CELL;
+            cell.NewValue = CellConstants.DEAD_CELL;
             return board;
         }
 
